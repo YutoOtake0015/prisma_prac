@@ -1,0 +1,21 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Users {
+  id Int [pk, increment]
+  email String [unique, not null]
+  name String
+  posts Posts [not null]
+}
+
+Table Posts {
+  id Int [pk, increment]
+  title String [not null]
+  content String
+  published Boolean [not null, default: false]
+  author Users [not null]
+  authorId Int [not null]
+}
+
+Ref: Posts.authorId > Users.id [delete: Cascade]
